@@ -145,15 +145,15 @@ one will be used automatically. If you pass `null`, none will be used at all.
 
 Returns data provided when generating a report, which is carried over to `quote`.
 
-### `SecureWorker.getRemoteAttestation(quote:ArrayBuffer, payloadObj:Object, raUrl:String, callbackFn:Function) : ArrayBuffer`
+### `SecureWorker.getRemoteAttestation(quote:ArrayBuffer, subscriptionKey:String, callbackFn:Function, options:Object) : ArrayBuffer`
 
 Returns a signed attestation for provided `quote` if Remote Attestation succeeds.
 
-`payLoadObj` must contain the Subscription Key for the Remote Attestation Server with the key `subscriptionKey`. The `payloadObj` may also contain a `pseManifest` and a `nonce` (see [Intel Attestation Service Spec](https://api.trustedservices.intel.com/documents/sgx-attestation-api-spec.pdf)) 
-
-`raUrl` is the URL of the Remote Attestation server. If left empty, it will be defaulted to the Intel Remote Attestation Service.
+`subscriptionKey` must contain the Subscription Key for the Remote Attestation Server.
 
 `callbackFn` is a callback function with the signature `function callbackFn(attestationSignature:ArrayBuffer, [errorMsg:String])`.
+
+The `options` object gives you more control over the Remote Attestation request. It allows a `url`(to set a custom Remote Attestation URL), a `pseManifest` and a `nonce` (see [Intel Attestation Service Spec](https://api.trustedservices.intel.com/documents/sgx-attestation-api-spec.pdf)) 
 
 ### `SecureWorker.validateRemoteAttestation(quote:ArrayBuffer, attestation:ArrayBuffer) : Boolean`
 
